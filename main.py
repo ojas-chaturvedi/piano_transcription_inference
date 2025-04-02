@@ -2,7 +2,6 @@ import os
 import argparse
 import torch
 import time
-
 import librosa
 from piano_transcription_inference import PianoTranscription, sample_rate
 
@@ -15,9 +14,9 @@ def inference(args):
         audio_path: str
     """
 
-    # Arugments & parameters
-    audio_path = args.audio_path
-    output_midi_path = args.output_midi_path
+    # Arguments & parameters
+    audio_path = args.input
+    output_midi_path = args.output
     device = "cuda" if torch.cuda.is_available() else "cpu"
 
     # Load audio
@@ -28,15 +27,22 @@ def inference(args):
 
     # Transcribe and write out to MIDI file
     transcribe_time = time.time()
-    transcribed_dict = transcriptor.transcribe(audio, output_midi_path)
+    _ = transcriptor.transcribe(audio, output_midi_path)
     print("Transcribe time: {:.3f} s".format(time.time() - transcribe_time))
 
 
 if __name__ == "__main__":
-
-    parser = argparse.ArgumentParser(description="")
-    parser.add_argument("--audio_path", type=str, required=True)
-    parser.add_argument("--output_midi_path", type=str, required=True)
+    parser = argparse.ArgumentParser(description="Piano transcription inference")
+    parser.add_argument(
+        "-i", "--input", type=str, required=True, help="Path to the input audio file"
+    )
+    parser.add_argument(
+        "-o",
+        "--output",
+        type=str,
+        required=True,
+        help="Path to save the output MIDI file",
+    )
 
     args = parser.parse_args()
     inference(args)
