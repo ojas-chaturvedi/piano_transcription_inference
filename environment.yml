@@ -13,8 +13,8 @@ dependencies:
     - scipy
     - scikit-learn
     - matplotlib
-    - torch
     - pip:
+          - torch
           - audioread
           - certifi
           - cffi
