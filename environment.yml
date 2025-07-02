@@ -13,6 +13,8 @@ dependencies:
     - scipy
     - scikit-learn
     - matplotlib
+    - gcc_linux-64
+    - gxx_linux-64
     - pip:
           - torch
           - audioread
