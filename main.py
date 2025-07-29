@@ -23,7 +23,7 @@ def inference(args):
     audio, _ = librosa.load(path=audio_path, sr=sample_rate, mono=True)
 
     # Transcriptor
-    transcriptor = PianoTranscription(device=device, checkpoint_path="/anvil/scratch/x-ochaturvedi/piano_transcription_inference_data/note_F1=0.9677_pedal_F1=0.9186.pth")
+    transcriptor = PianoTranscription(device=device, checkpoint_path="/scratch/gilbreth/ochaturv/piano_transcription_inference_data/note_F1=0.9677_pedal_F1=0.9186.pth")
 
     # Transcribe and write out to MIDI file
     transcribe_time = time.time()
