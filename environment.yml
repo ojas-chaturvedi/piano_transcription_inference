@@ -4,6 +4,7 @@ channels:
     - conda-forge
 dependencies:
     - python=3.10
+    - tensorflow
     - pip
     - ca-certificates
     - openssl
@@ -16,7 +17,6 @@ dependencies:
     - gcc_linux-64
     - gxx_linux-64
     - pip:
-          - tensorflow==2.19.0
           - torch
           - audioread
           - certifi
